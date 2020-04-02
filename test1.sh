@@ -1,5 +1,5 @@
 git rm -r --cached test
-git commit -m 'delete test dir'
+git commit -m 'delete test dir-1'
 git push -u origin master
 yarn build
 git add .
