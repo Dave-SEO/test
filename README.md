@@ -66,3 +66,37 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+##### 命令式开发
+1. 直接操作dom的方式称为命令式的编程
+##### 声明式开发
+1. react
+##### 单项数据流
+1. 父组件向子组件传值，子组件不能直接修改父组件值
+##### propTypes
+1. 限制父组件向子组件传值的类型
+2. isRequired 要求父组件必须传递当前属性例如：test: PropTypes.number.isRequired
+3. 限制父组件传递string或者number：test: PropTypes.arrayOf(PropTypes.number, PropTypes.string)
+##### defaultProps
+1. 给组件传递默认值
+##### state,props,render关系
+1. 当组件的state或者props发生改变时，render函数就会重新执行
+2. 父组件或者props执行都会造成子组件render函数的执行
+##### 虚拟dom （没有直接做dom的对比从而节省了性能，documentfragment）
+1. tate 数据
+2. jsx模版
+3. 数据+模版结合，生成真实的DOM，来显示
+ ```html
+  <div id="abc"><span>hello World<span></div>
+ ```
+4. 生成虚拟dom（虚拟dom就是一个js对象，用它来描述真实dom）（损耗性能）
+```javascript
+['div',{id: 'abc'}, ['span',{},'hello world']]
+```
+5. state 发生变化
+6. 数据+模版生成新的虚拟dom（极大的提升了性能）
+```javascript
+['div',{id: 'abc'}, ['span',{},'test']]
+```
+7. 比较原始虚拟dom和新的虚拟dom的区别，找到区别是span中的内容（极大的提升了性能）
+8. 直接操作dom，改变span 中的内容
