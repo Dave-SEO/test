@@ -100,3 +100,27 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ```
 7. 比较原始虚拟dom和新的虚拟dom的区别，找到区别是span中的内容（极大的提升了性能）
 8. 直接操作dom，改变span 中的内容
+
+##### react 中的虚拟dom
+1. tate 数据
+2. jsx模版
+4. 数据+模版结合生成虚拟dom（虚拟dom就是一个js对象，用它来描述真实dom）（损耗性能）
+3. 用虚拟dom的结构，生成真实的DOM，来显示
+ ```html
+  <div id="abc"><span>hello World<span></div>
+ ```
+```javascript
+['div',{id: 'abc'}, ['span',{},'hello world']]
+```
+5. state 发生变化
+6. 数据+模版生成新的虚拟dom（极大的提升了性能）
+```javascript
+['div',{id: 'abc'}, ['span',{},'test']]
+```
+7. 比较原始虚拟dom和新的虚拟dom的区别，找到区别是span中的内容（极大的提升了性能）
+8. 直接操作dom，改变span 中的内容
+##### react jsx
+1. 页面中的jsx=>React.createElement('',{},'')=>js对象=>真实dom
+##### react 虚拟dom优点
+1. 性能提升
+2. 它使得跨端应用得以实现，React Native
