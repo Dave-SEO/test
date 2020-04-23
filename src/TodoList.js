@@ -13,6 +13,30 @@ class TodoList extends Component {
     this.handlenChangeInput = this.handlenChangeInput.bind(this)
     this.handlenClick = this.handlenClick.bind(this)
   }
+  // 当组件即将被挂载到页面的时候自动执行
+  componentWillMount(){
+    console.log('componentWillMount')
+  }
+  // 组件被挂载到页面之后自动执行
+  componentDidMount(){
+    console.log('componentDidMount')
+  }
+ // 组件被更新之前执行
+ shouldComponentUpdate(){
+   console.log('shouldComponentUpdate')
+   return true
+ }
+ // 在shouldComponentUpdate之后并且返回true后执行
+componentWillUpdate(){
+  console.log('shouldComponentUpdate')
+}
+// 组件更新完成之后，会执行
+componentDidUpdate(){
+  console.log('shouldComponentUpdate')
+}
+componentWillUnmount(){
+  console.log('componentWillUnmount')
+}
  render(){
   return (
     <Fragment> 
@@ -20,9 +44,9 @@ class TodoList extends Component {
         <label htmlFor="name" >输入</label>
         {/* 改变组件作用域 */}
         <input  id="name" value={this.state.valueInput} onChange = {this.handlenChangeInput} /> 
-        <button onClick={this.handlenClick}>提交</button>
+        <button onClick={this.handlenClick} ref={(input)=>{this.input = input}}>提交</button>
       </div>
-      <ul>
+      <ul ref={(ul)=>{this.ul = ul}}>
         {
           this.state.list.map((item, index) => {
             // return <li key={index} onClick={this.handlenItemDelete.bind(this,index)} dangerouslySetInnerHTML={{__html:item}}></li>
@@ -45,7 +69,9 @@ class TodoList extends Component {
     this.setState((prevProps)=>({
       list: [...prevProps.list, prevProps.valueInput],
       valueInput: ''
-    }))
+    }),()=>{
+       console.log('this.ul', this.ul.querySelectorAll('li'))
+    })
   }
   handlenItemDelete(index){
     this.setState((prevProps)=>{

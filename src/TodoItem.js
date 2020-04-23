@@ -5,6 +5,9 @@ export default class TodoItem extends Component{
         super(props)
         this.handleDelete = this.handleDelete.bind(this)
     }
+    componentWillReceiveProps(){
+        console.log('componentWillReceiveProps')
+    }
     render(){
         return  <li onClick={this.handleDelete}>{this.props.test}-{this.props.content}</li>
     }

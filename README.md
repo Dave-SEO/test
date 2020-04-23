@@ -124,3 +124,16 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ##### react 虚拟dom优点
 1. 性能提升
 2. 它使得跨端应用得以实现，React Native
+##### react different 算法
+1. react 中的虚拟dom是同层比对的，例如第一层比对发现差异，之后的就不会再进行比对，直接删除
+2. setState 可以把相近时间的setState合并成一个setState，，减少虚拟dom比对的次数，这也是setState 设计成异步的初衷
+3. key---- 再做循环时增加key值是用来提高虚拟dom比对的性能，key值要保持稳定，尽量不要使用下标做key值
+##### react生命周期
+1. componentWillMount：当组件即将被挂载到页面的时候自动执行
+2. componentDidMount：组件被挂载到页面之后自动执行
+3. render: 页面挂载执行
+4. shouldComponentUpdate: 组件被更新之前执行 返回一个bool值确认是否更新
+5. componentWillUpdate: 在shouldComponentUpdate之后并且返回true后执行
+6. componentDidUpdate： 组件更新完成之后，会执行
+7. componentWillReceiveProps
+8. componentWillUnmount: 组件将要被销毁时执行
