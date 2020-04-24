@@ -5,6 +5,10 @@ export default class TodoItem extends Component{
         super(props)
         this.handleDelete = this.handleDelete.bind(this)
     }
+    shouldComponentUpdate(prev, next){
+        console.log(prev, next)
+        return true
+    }
     componentWillReceiveProps(){
         console.log('componentWillReceiveProps')
     }
