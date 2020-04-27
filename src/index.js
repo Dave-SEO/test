@@ -1,9 +1,12 @@
-import React,{StrictMode} from 'react';
+import React from 'react';
 import {render} from 'react-dom';
 import TodoList from './TodoList';
+import {Provider} from 'react-redux'
+import store from './store'
+
 render(
-  <StrictMode>
+  <Provider store={store}>
     <TodoList />
-  </StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
